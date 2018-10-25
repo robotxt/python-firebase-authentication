@@ -1,0 +1,39 @@
+<html>
+
+<head>
+  <title>Tester</title>
+</head>
+
+<body>
+
+<h1>Firebase Token will be generated below</h1>
+<p id="token_id"></p>
+</body>
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js">
+</script>
+<script>
+  // Initialize Firebase
+  var config = "Add firebase generated config here.";
+  firebase.initializeApp(config);
+  
+  const token = "<add your python generated token here>";
+
+  firebase.auth().signInWithCustomToken(token).then(function() {  
+
+    firebase.auth().currentUser.getIdToken().then(function(idToken) {
+      console.log(idToken);
+      $("#token_id").html(idToken);
+    }).catch(function(error) {
+      // Handle error
+    });
+    
+  });
+
+</script>
+
+</html>
